@@ -9,9 +9,10 @@ package ufps.poo2.ejercicio.banco.modelo;
  * @author borisperezg
  */
 public class CurrentAccount extends Account {
-    
+
+    CurrentAccountDAO dao = new CurrentAccountDAO();
     private double valorSobregiro;
-    
+
     public CurrentAccount(int accnum, double valorSobregiro) {
         super(accnum);
         this.valorSobregiro = valorSobregiro;
@@ -21,21 +22,31 @@ public class CurrentAccount extends Account {
     public void deposit(double sum) throws Exception {
         super.deposit(sum); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
-    
+
     @Override
     public void withdraw(double sum) throws Exception {
-        
-        if(valorSobregiro==0) 
-            throw new Exception("Cuenta "+super.getAccountNumber()+"::: No tiene valor de sobregiro asignado");
-        
+
+        if (valorSobregiro == 0) {
+            throw new Exception("Cuenta " + super.getAccountNumber() + "::: No tiene valor de sobregiro asignado");
+        }
+
         double valorDisponible = super.getBalance() + valorSobregiro;
-        
-        if(valorDisponible>sum)
+
+        if (valorDisponible > sum) {
             super.withdraw(sum);
-        else
-            throw new Exception("Cuenta "+super.getAccountNumber()+"::: No tiene saldo para retirar");
+        } else {
+            throw new Exception("Cuenta " + super.getAccountNumber() + "::: No tiene saldo para retirar");
+        }
     }
-    
-    
-    
+
+    public void aniadirCuenta() {
+        dao.add(this);
+
+    }
+
+    @Override
+    public void add() {
+        dao.add(this);
+    }
+
 }

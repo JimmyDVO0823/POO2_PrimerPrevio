@@ -1,5 +1,7 @@
 package ufps.poo2.ejercicio.banco.modelo;
 
+import java.util.ArrayList;
+
 public abstract class Account {
 
     private double bal; // The current balance
@@ -26,6 +28,16 @@ public abstract class Account {
         }
     }
 
+    
+    public ArrayList<Account> listAccounts(){
+        ArrayList<Account> cuentas = new ArrayList<>();
+        
+        return null;
+    }
+    
+    public abstract void add();
+    
+    //GETTERS SETTER Y DEMAS
     public double getBalance() {
         return bal;
     }

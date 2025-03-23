@@ -47,8 +47,8 @@ public class Bank {
         }
         
         try{
-            cuenta.deposit(balance);            
-            cuentas.add(cuenta);
+            cuenta.deposit(balance);
+            cuenta.add();
         }catch(NullPointerException e){
             throw new Exception("La cuenta no se pudo crear");
         }

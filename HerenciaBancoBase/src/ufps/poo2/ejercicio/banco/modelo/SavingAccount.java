@@ -10,11 +10,13 @@ package ufps.poo2.ejercicio.banco.modelo;
  */
 public class SavingAccount extends Account {
     
+    SavingAccountDAO dao;
     private double interest;
     
     public SavingAccount(int accnum, double interest) {
         super(accnum);
         this.interest = interest;
+        dao = new SavingAccountDAO();
     }
 
     public double getInterest() {
@@ -39,6 +41,11 @@ public class SavingAccount extends Account {
         double newVal = super.getBalance() * interest + sum;
         
         super.deposit(newVal); 
+    }
+
+    @Override
+    public void add() {
+        dao.add(this);
     }
     
     

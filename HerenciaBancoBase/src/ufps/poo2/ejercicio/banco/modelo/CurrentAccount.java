@@ -4,6 +4,8 @@
  */
 package ufps.poo2.ejercicio.banco.modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author borisperezg
@@ -20,7 +22,8 @@ public class CurrentAccount extends Account {
 
     @Override
     public void deposit(double sum) throws Exception {
-        super.deposit(sum); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        super.deposit(sum); 
+        dao.update(getAccountNumber() + "", this);
     }
 
     @Override
@@ -49,4 +52,19 @@ public class CurrentAccount extends Account {
         dao.add(this);
     }
 
+    @Override
+    public String toString() {
+        return "Num: " + getAccountNumber()  + " Bal: " + getBalance() + " Sobregijo: " + getValorSobregiro();
+    }
+
+    public double getValorSobregiro() {
+        return valorSobregiro;
+    }
+
+    public void setValorSobregiro(double valorSobregiro) {
+        this.valorSobregiro = valorSobregiro;
+    }
+
+    
+    
 }

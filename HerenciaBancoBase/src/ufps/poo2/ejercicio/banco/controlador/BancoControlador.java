@@ -68,8 +68,8 @@ public class BancoControlador {
 
     }
 
-    public void listarCuentas() {
-        
+    public void listarCuentas() throws Exception {
+        System.out.println(fachada.listarCuentas());
     }
 
     private void mostrarMensaje(String str) {

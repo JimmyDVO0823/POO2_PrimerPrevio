@@ -51,7 +51,7 @@ public class CurrentAccountDAO implements IDAO {
 
         List<String> lineas = new ArrayList<>();
         boolean encontrado = false;
-        String[] nuevaLinea = {dto.getAccountNumber() + "", +dto.getBalance() + ""};
+        String[] nuevaLinea = {dto.getAccountNumber() + "", +dto.getBalance() + "" };
 
         // Se abre el archivo para leer
         try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
@@ -117,26 +117,12 @@ public class CurrentAccountDAO implements IDAO {
     }
 
     @Override
-    public ArrayList<Account> list() {
-
-        ArrayList<Account> cuentas = new ArrayList<>();
-
-        // Se abre el archivo para leer
-        try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
-            String linea;
-            // Se lee el contenido de la línea
-            while ((linea = br.readLine()) != null) {
-                String[] partes = linea.split(";");
-                cuentas.add(new CurrentAccount(Integer.parseInt(partes[0]), Double.parseDouble(partes[1])));
-            }
-        } catch (IOException e) {
-            System.err.println("Error al leer el archivo: " + e.getMessage());
-        }
-        return cuentas;
+    public Account find(int numeroCuenta) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public Account find(int numeroCuenta) {
+    public ArrayList<Account> list() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

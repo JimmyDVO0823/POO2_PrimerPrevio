@@ -1,5 +1,9 @@
 package ufps.poo2.ejercicio.banco.modelo;
 
+import Utilerias.Util;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public abstract class Account {
@@ -29,7 +33,45 @@ public abstract class Account {
     }
 
     
-    public abstract ArrayList<Account> listAccounts();
+    public static ArrayList<Account> listAccounts() throws Exception{
+        ArrayList<Account> cuentas = new ArrayList<>();
+        ArrayList<CurrentAccount> currentAccounts = new ArrayList<>();
+        ArrayList<SavingAccount> savingAccounts = new ArrayList<>();
+
+        // Se abre el archivo para leer
+        try (BufferedReader br = new BufferedReader(new FileReader(Util.CURRENT_ACCOUNTS))) {
+            String linea;
+            // Se lee el contenido de la línea
+            while ((linea = br.readLine()) != null) {
+                String[] partes = linea.split(";");
+                CurrentAccount cuenta = new CurrentAccount(Integer.parseInt(partes[0]), 0.2);
+                cuenta.deposit(Double.parseDouble(partes[1]));
+                currentAccounts.add(cuenta);
+                //System.out.println("El balance es de " + partes[1]);
+            }
+        } catch (IOException e) {
+            System.err.println("Error al leer el archivo: " + e.getMessage());
+        }
+        
+        // Se abre el archivo para leer
+        try (BufferedReader br = new BufferedReader(new FileReader(Util.SAVING_ACCOUNTS))) {
+            String linea;
+            // Se lee el contenido de la línea
+            while ((linea = br.readLine()) != null) {
+                String[] partes = linea.split(";");
+                SavingAccount cuenta = new SavingAccount(Integer.parseInt(partes[0]), 0.15);
+                cuenta.deposit(Double.parseDouble(partes[1]));
+                savingAccounts.add(cuenta);
+            }
+        } catch (IOException e) {
+            System.err.println("Error al leer el archivo: " + e.getMessage());
+        }
+        
+        cuentas.addAll(currentAccounts);
+        cuentas.addAll(savingAccounts);
+        
+        return cuentas;
+    }
     
     public abstract void add();
     
@@ -42,6 +84,7 @@ public abstract class Account {
         return accnum;
     }
 
+    @Override
     public String toString() {
         return "Acc " + accnum + ": " + "balance = " + bal;
     }

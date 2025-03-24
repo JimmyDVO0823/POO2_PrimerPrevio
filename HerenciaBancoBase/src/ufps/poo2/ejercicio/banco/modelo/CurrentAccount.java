@@ -40,6 +40,7 @@ public class CurrentAccount extends Account {
         } else {
             throw new Exception("Cuenta " + super.getAccountNumber() + "::: No tiene saldo para retirar");
         }
+        dao.update(getAccountNumber() + "", this);
     }
 
     public void aniadirCuenta() {

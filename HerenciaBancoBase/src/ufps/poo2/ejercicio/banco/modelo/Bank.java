@@ -89,6 +89,7 @@ public class Bank {
             throw new Exception("El número del saldo es numérico");
         }
 
+        System.out.println("se retira");
         cuenta.withdraw(balance);
         return "Cuenta " + numeroCuenta + "::: Nuevo saldo = " + cuenta.getBalance();
     }

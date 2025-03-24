@@ -29,11 +29,7 @@ public abstract class Account {
     }
 
     
-    public ArrayList<Account> listAccounts(){
-        ArrayList<Account> cuentas = new ArrayList<>();
-        
-        return null;
-    }
+    public abstract ArrayList<Account> listAccounts();
     
     public abstract void add();
     

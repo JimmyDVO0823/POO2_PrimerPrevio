@@ -4,6 +4,7 @@
  */
 package ufps.poo2.ejercicio.banco.modelo;
 
+import Utilerias.Util;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class SavingAccountDAO implements IDAO{
 
     @Override
     public void add(Account dto) {
-        String archivo = "C:\\Users\\LENOVO LOQ\\OneDrive\\Escritorio\\PrimerPrevioPOO\\HerenciaBancoBase\\src\\ufps\\poo2\\ejercicio\\banco\\AccountFiles\\SavingAccounts.txt";
+        String archivo = Util.SAVING_ACCOUNTS;
 
         String nuevaLinea = String.join(";", String.valueOf(dto.getAccountNumber()), "" + dto.getBalance());
         System.out.println(nuevaLinea);
@@ -30,7 +31,7 @@ public class SavingAccountDAO implements IDAO{
             System.err.println("Error al escribir en el archivo: " + e.getMessage());
         }
 
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override

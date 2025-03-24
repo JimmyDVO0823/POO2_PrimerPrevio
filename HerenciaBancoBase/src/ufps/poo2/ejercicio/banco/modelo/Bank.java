@@ -4,10 +4,8 @@ import java.util.ArrayList;
 
 public class Bank {
 
-    private ArrayList<Account> cuentas;
-
     public Bank() {
-        cuentas = new ArrayList<>();
+        
     }
     
     /**
@@ -107,10 +105,10 @@ public class Bank {
             throw new Exception("El número de cuenta es numérico");
         }
         
-        for (Account cuenta : cuentas) {
-            if(cuenta.getAccountNumber()==numCuenta)
-                return cuenta;
-        }
+//        for (Account cuenta : cuentas) {
+//           if(cuenta.getAccountNumber()==numCuenta)
+//                return cuenta;
+//        }
         return null;
     }
     

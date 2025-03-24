@@ -34,8 +34,8 @@ public class SavingAccount extends Account {
         if (sum > super.getBalance()) {
             throw new Exception("Cuenta " + super.getAccountNumber() + ": No puede retirar valores mayores al saldo disponible");
         }
-
         super.withdraw(sum);
+        dao.update(getAccountNumber() + "", this);
     }
 
     @Override
@@ -44,6 +44,7 @@ public class SavingAccount extends Account {
         double newVal = super.getBalance() * interest + sum;
 
         super.deposit(newVal);
+        dao.update(getAccountNumber() + "", this);
     }
 
     @Override

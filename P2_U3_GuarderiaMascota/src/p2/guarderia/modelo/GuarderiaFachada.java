@@ -9,45 +9,44 @@ package p2.guarderia.modelo;
  * @author Boris Perez
  */
 public class GuarderiaFachada {
- 
+
     private IDAO idao;
-    
-    public void agregarMascota(String id, String nombre, 
-            String edad, String raza) throws Exception{
+
+    public void agregarMascota(String id, String nombre,
+            String edad, String raza) throws Exception {
+        int edadParseada = Integer.parseInt(edad);
         
         idao = new MascotaDAO();
-        
-        
-        MascotaDTO dto = new MascotaDTO(id, nombre);
+
+        MascotaDTO dto = new MascotaDTO(id, nombre,raza,edadParseada);
         
         idao.agregar(dto);
-        
+
     }
-    
-    public void asignarPropietarioMascota(String idMascota, 
-            String idPersona) throws Exception{
-        
+
+    public void asignarPropietarioMascota(String idMascota,
+            String idPersona) throws Exception {
+
         idao = new MascotaDAO();
-        MascotaDTO dtoM = (MascotaDTO)idao.buscar(idMascota);
-        
+        MascotaDTO dtoM = (MascotaDTO) idao.buscar(idMascota);
+
         idao = new PersonaDAO();
         PersonaDTO dtoP = (PersonaDTO) idao.buscar(idPersona);
-        
+
         dtoM.setDto(dtoP);
-        
+
         // Actualizar!!
-        
     }
-    
-    public void buscarMascota(String idMascota) throws Exception{
+
+    public void buscarMascota(String idMascota) throws Exception {
         idao = new MascotaDAO();
-        MascotaDTO dtoM = (MascotaDTO)idao.buscar(idMascota);
-        
+        MascotaDTO dtoM = (MascotaDTO) idao.buscar(idMascota);
+
         idao = new PersonaDAO();
         PersonaDTO dtoP = (PersonaDTO) idao.buscar(dtoM.getDto().getId());
-        
+
         dtoM.setDto(dtoP);
-        
+
     }
-    
+
 }

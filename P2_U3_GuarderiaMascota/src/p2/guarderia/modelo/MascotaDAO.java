@@ -4,6 +4,11 @@
  */
 package p2.guarderia.modelo;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import Utilities.Paths;
 /**
  *
  * @author borisperezg
@@ -29,8 +34,17 @@ public class MascotaDAO implements IDAO {
             linea += dtoMascota.getDto().getId();
         else
             linea += "null";
-        
-        file.writeln(linea);
+                
+        System.out.println(linea);
+        // Abrir el archivo en modo append (true) para añadir al final
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(Paths.MASCOTAS, true))) {
+            bw.write(linea); // Escribir la nueva línea
+            bw.newLine();         // Añadir salto de línea
+            System.out.println("Cuenta añadida exitosamente.");
+        } catch (IOException e) {
+            System.err.println("Error al escribir en el archivo: " + e.getMessage());
+        }
+
     }
 
     @Override
@@ -44,19 +58,34 @@ public class MascotaDAO implements IDAO {
         // Encuentra la linea
         // Split -> String[]
         
-        dto.setId(arreglo[0]);
-        dto.setNombre(arreglo[1]);
-        dto.setEdad(arreglo[2]);
-        dto.setRaza(arreglo[3]);
+        dto.setId("");
+        dto.setNombre("");
+        dto.setEdad(1);
+        dto.setRaza("");
         
         PersonaDTO dtoP = new PersonaDTO();
-        dtoP.setId(arreglo[4]);
+        dtoP.setId("");
         
         dto.setDto(dtoP);
         
         
         
         return dto;
+    }
+
+    @Override
+    public void eliminar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void actiualizar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ArrayList<IObjetoDTO> listar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

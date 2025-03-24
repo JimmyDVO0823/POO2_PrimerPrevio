@@ -15,29 +15,31 @@ import p2.guarderia.modelo.GuarderiaFachada;
  * @author Boris Perez
  */
 public class GuarderiaControlador {
-    
+
     private GuarderiaVista frame;
     private GuarderiaFachada negocio;
 
     public GuarderiaControlador(GuarderiaVista frame) {
         this.frame = frame;
-        
+
         negocio = new GuarderiaFachada();
     }
 
     public void agregarMascota() {
-        
+
         try {
             // Obtener datos de cajas de texto
-            
-            String id = frame.getTxtIdMascotaAgregar().getText();
 
-            negocio.agregarMascota(id, "nombre", "edad", "raza");
+            String id = frame.getTxtIdMascotaAgregar().getText();
+            String nombre = frame.getTxtNombreMascota().getText();
+            String edad = frame.getTxtEdadMascota().getText();
+            String raza = frame.getTxtRazaMascota().getText();
+            
+            
+            negocio.agregarMascota(id, nombre, edad, raza);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }
-    
-    
-    
+
 }

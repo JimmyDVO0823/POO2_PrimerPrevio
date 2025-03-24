@@ -4,6 +4,8 @@
  */
 package p2.guarderia.modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author borisperezg

@@ -38,7 +38,7 @@ public class GuarderiaFachada {
         // Actualizar!!
     }
 
-    public void buscarMascota(String idMascota) throws Exception {
+    public MascotaDTO buscarMascota(String idMascota) throws Exception {
         idao = new MascotaDAO();
         MascotaDTO dtoM = (MascotaDTO) idao.buscar(idMascota);
 
@@ -47,6 +47,7 @@ public class GuarderiaFachada {
 
         dtoM.setDto(dtoP);
 
+        return dtoM;
     }
 
 }

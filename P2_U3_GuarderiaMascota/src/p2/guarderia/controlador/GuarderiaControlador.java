@@ -34,16 +34,30 @@ public class GuarderiaControlador {
             String nombre = frame.getTxtNombreMascota().getText();
             String edad = frame.getTxtEdadMascota().getText();
             String raza = frame.getTxtRazaMascota().getText();
-            
-            
+
             negocio.agregarMascota(id, nombre, edad, raza);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }
-    
-    public void buscarEliminar(){
-        
+
+    public void buscarEliminar() throws Exception {
+        try {
+            String nombreMascota = negocio.buscarMascota(frame.getTxtIdMascotaEliminar().getText()).getNombre();
+            System.out.println(nombreMascota);
+            frame.getTxtNombreMascotaEliminar().setText(nombreMascota);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Mascota no Encontrada", "Busqueda Fallida", JOptionPane.ERROR_MESSAGE);
+
+        }
     }
 
+    public void setNombreEliminarTxt(String nombre) {
+        frame.getTxtNombreMascotaEliminar().setText(nombre);
+    }
+
+//    public String[] buscarMascota(){
+//        
+//    }
 }

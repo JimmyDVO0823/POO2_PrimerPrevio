@@ -4,6 +4,8 @@
  */
 package p2.guarderia.vista;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTextField;
 import p2.guarderia.controlador.GuarderiaControlador;
 
@@ -14,13 +16,13 @@ import p2.guarderia.controlador.GuarderiaControlador;
 public class GuarderiaVista extends javax.swing.JFrame {
 
     private GuarderiaControlador controlador;
-    
+
     /**
      * Creates new form GuarderiaVista
      */
     public GuarderiaVista() {
         initComponents();
-        
+
         controlador = new GuarderiaControlador(this);
     }
 
@@ -59,9 +61,15 @@ public class GuarderiaVista extends javax.swing.JFrame {
     public void setTxtRazaMascota(JTextField txtRazaMascota) {
         this.txtRazaMascota = txtRazaMascota;
     }
-    
 
-    
+    public JTextField getTxtNombreMascotaEliminar() {
+        return txtNombreMascotaEliminar;
+    }
+
+    public void setTxtNombreMascotaEliminar(JTextField txtNombreMascotaEliminar) {
+        this.txtNombreMascotaEliminar = txtNombreMascotaEliminar;
+    }
+
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -87,9 +95,9 @@ public class GuarderiaVista extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         txtIdMascotaEliminar = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        cmdBuscarEliminar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        txtNombreMascotaEliminar = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -197,12 +205,22 @@ public class GuarderiaVista extends javax.swing.JFrame {
 
         jLabel6.setText("ID:");
 
-        jButton3.setText("Buscar");
+        cmdBuscarEliminar.setText("Buscar");
+        cmdBuscarEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBuscarEliminarActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Nombre:");
 
-        jTextField6.setEditable(false);
-        jTextField6.setBackground(new java.awt.Color(255, 255, 204));
+        txtNombreMascotaEliminar.setEditable(false);
+        txtNombreMascotaEliminar.setBackground(new java.awt.Color(255, 255, 204));
+        txtNombreMascotaEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreMascotaEliminarActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Eliminar");
 
@@ -225,11 +243,11 @@ public class GuarderiaVista extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(txtIdMascotaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButton3))
+                            .addComponent(cmdBuscarEliminar))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabel7)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtNombreMascotaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -239,11 +257,11 @@ public class GuarderiaVista extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtIdMascotaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(cmdBuscarEliminar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombreMascotaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
@@ -465,6 +483,21 @@ public class GuarderiaVista extends javax.swing.JFrame {
         controlador.agregarMascota();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void cmdBuscarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBuscarEliminarActionPerformed
+        
+        try {
+            controlador.buscarEliminar();
+        } catch (Exception ex) {
+            Logger.getLogger(GuarderiaVista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }//GEN-LAST:event_cmdBuscarEliminarActionPerformed
+
+    private void txtNombreMascotaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreMascotaEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreMascotaEliminarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -501,10 +534,10 @@ public class GuarderiaVista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdBuscarEliminar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -537,7 +570,6 @@ public class GuarderiaVista extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField txtEdadMascota;
@@ -545,6 +577,7 @@ public class GuarderiaVista extends javax.swing.JFrame {
     private javax.swing.JTextField txtIdMascotaAgregar;
     private javax.swing.JTextField txtIdMascotaEliminar;
     private javax.swing.JTextField txtNombreMascota;
+    private javax.swing.JTextField txtNombreMascotaEliminar;
     private javax.swing.JTextField txtRazaMascota;
     // End of variables declaration//GEN-END:variables
 }

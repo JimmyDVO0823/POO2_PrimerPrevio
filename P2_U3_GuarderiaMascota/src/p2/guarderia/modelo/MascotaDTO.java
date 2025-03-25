@@ -19,6 +19,8 @@ public class MascotaDTO implements IObjetoDTO {
         this.raza = raza;
         this.edad = edad;
     }
+    
+    
 
     
     
@@ -36,6 +38,11 @@ public class MascotaDTO implements IObjetoDTO {
     }
 
     public MascotaDTO() {
+    }
+
+    @Override
+    public String toString() {
+        return "ID: " + getId() + " Nombre: " + getNombre() + " Raza: " + getRaza() + " Edad: " + getEdad();
     }
     
     

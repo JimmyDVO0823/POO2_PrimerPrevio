@@ -82,9 +82,10 @@ public class MascotaDAO implements IDAO {
                     
                     dto.setId(partes[0]);
                     dto.setNombre(partes[1]);
-                    dto.setNombre(partes[1]);
-                    dto.setNombre(partes[1]);
-                    dto.setNombre(partes[1]);
+                    dto.setRaza(partes[2]);
+                    dto.setEdad(Integer.parseInt(partes[3]));
+                    //if(partes[4] != null)dto.setDto(partes[4]);
+                    
                     
                     encontrado = true;
                 }
@@ -102,17 +103,17 @@ public class MascotaDAO implements IDAO {
             JOptionPane.showMessageDialog(null, "Mascota no Encontrada", "Busqueda Fallida",JOptionPane.ERROR_MESSAGE);
         }
         
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(Paths.MASCOTAS))) {
-            for (String linea : lineas) {
-                bw.write(linea);
-                bw.newLine();
-            }
-        } catch (IOException e) {
-            System.err.println("Error al escribir el archivo: " + e.getMessage());
-        }
+//        try (BufferedWriter bw = new BufferedWriter(new FileWriter(Paths.MASCOTAS))) {
+//            for (String linea : lineas) {
+//                bw.write(linea);
+//                bw.newLine();
+//            }
+//        } catch (IOException e) {
+//            System.err.println("Error al escribir el archivo: " + e.getMessage());
+//        }
         
         
-        
+        System.out.println(dto);
         return dto;
     }
 

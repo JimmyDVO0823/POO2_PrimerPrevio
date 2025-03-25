@@ -9,6 +9,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import Utilities.Paths;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.List;
+import Utilities.Paths;
+import javax.swing.JOptionPane;
 /**
  *
  * @author borisperezg
@@ -55,18 +60,56 @@ public class MascotaDAO implements IDAO {
         // crear el objeto y llenarlo.
         MascotaDTO dto = new MascotaDTO();
         
-        // Encuentra la linea
-        // Split -> String[]
         
-        dto.setId("");
-        dto.setNombre("");
-        dto.setEdad(1);
-        dto.setRaza("");
         
-        PersonaDTO dtoP = new PersonaDTO();
-        dtoP.setId("");
         
-        dto.setDto(dtoP);
+
+        List<String> lineas = new ArrayList<>();
+        boolean encontrado = false;
+
+        // Se abre el archivo para leer
+        try (BufferedReader br = new BufferedReader(new FileReader(Paths.MASCOTAS))) {
+            String linea;
+            // Se lee el contenido de la línea
+            while ((linea = br.readLine()) != null && !encontrado) {
+                // Se divide la linea en sus partes: numerocuenta | saldo | tipocuenta
+                String[] partes = linea.split(";");
+
+                // Saco el número de la cuenta para poder actualizar el saldo
+                String idDB = partes[0];
+
+                if (idDB.equals(id)) {
+                    
+                    dto.setId(partes[0]);
+                    dto.setNombre(partes[1]);
+                    dto.setNombre(partes[1]);
+                    dto.setNombre(partes[1]);
+                    dto.setNombre(partes[1]);
+                    
+                    encontrado = true;
+                }
+                // Se van consolidando las lineas en un ArrayList.
+                // Esto se hace para luego escribirlas en un archivo.
+                lineas.add(linea);
+            }
+        } catch (IOException e) {
+            System.err.println("Error al leer el archivo: " + e.getMessage());
+            
+        }
+
+        if (!encontrado) {
+            System.out.println("Número de cuenta no encontrado.");
+            JOptionPane.showMessageDialog(null, "Mascota no Encontrada", "Busqueda Fallida",JOptionPane.ERROR_MESSAGE);
+        }
+        
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(Paths.MASCOTAS))) {
+            for (String linea : lineas) {
+                bw.write(linea);
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            System.err.println("Error al escribir el archivo: " + e.getMessage());
+        }
         
         
         

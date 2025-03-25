@@ -41,5 +41,9 @@ public class GuarderiaControlador {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }
+    
+    public void buscarEliminar(){
+        
+    }
 
 }

@@ -4,6 +4,8 @@
  */
 package p2.guarderia.modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Boris Perez
@@ -50,4 +52,10 @@ public class GuarderiaFachada {
         return dtoM;
     }
 
+    public ArrayList<String> listarMascotasId(){
+        ArrayList<String> lista;
+        idao = new MascotaDAO();
+        lista = idao.listar();
+    }
+    
 }

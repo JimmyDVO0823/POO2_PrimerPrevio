@@ -14,6 +14,7 @@ import java.io.FileReader;
 import java.util.List;
 import Utilities.Paths;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author borisperezg
@@ -23,23 +24,20 @@ public class MascotaDAO implements IDAO {
     @Override
     public void agregar(IObjetoDTO dto) throws Exception {
         // Abrir el archivo
-        
+
         // Buscar la última del archivo
-        
         // Insertar la mascota
-        
-        
-        
         MascotaDTO dtoMascota = (MascotaDTO) dto;
-        
-        String linea = dtoMascota.getId()+";"+dtoMascota.getNombre()+";"+
-                dtoMascota.getRaza()+";"+dtoMascota.getEdad()+";";
-        
-        if(dtoMascota.getDto()!=null)
+
+        String linea = dtoMascota.getId() + ";" + dtoMascota.getNombre() + ";"
+                + dtoMascota.getRaza() + ";" + dtoMascota.getEdad() + ";";
+
+        if (dtoMascota.getDto() != null) {
             linea += dtoMascota.getDto().getId();
-        else
+        } else {
             linea += "null";
-                
+        }
+
         System.out.println(linea);
         // Abrir el archivo en modo append (true) para añadir al final
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(Paths.MASCOTAS, true))) {
@@ -59,10 +57,6 @@ public class MascotaDAO implements IDAO {
         // que corresponda con el ID, y 
         // crear el objeto y llenarlo.
         MascotaDTO dto = new MascotaDTO();
-        
-        
-        
-        
 
         List<String> lineas = new ArrayList<>();
         boolean encontrado = false;
@@ -79,14 +73,13 @@ public class MascotaDAO implements IDAO {
                 String idDB = partes[0];
 
                 if (idDB.equals(id)) {
-                    
+
                     dto.setId(partes[0]);
                     dto.setNombre(partes[1]);
                     dto.setRaza(partes[2]);
                     dto.setEdad(Integer.parseInt(partes[3]));
                     //if(partes[4] != null)dto.setDto(partes[4]);
-                    
-                    
+
                     encontrado = true;
                 }
                 // Se van consolidando las lineas en un ArrayList.
@@ -95,14 +88,14 @@ public class MascotaDAO implements IDAO {
             }
         } catch (IOException e) {
             System.err.println("Error al leer el archivo: " + e.getMessage());
-            
+
         }
 
         if (!encontrado) {
             System.out.println("Número de cuenta no encontrado.");
-            JOptionPane.showMessageDialog(null, "Mascota no Encontrada", "Busqueda Fallida",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Mascota no Encontrada", "Busqueda Fallida", JOptionPane.ERROR_MESSAGE);
         }
-        
+
 //        try (BufferedWriter bw = new BufferedWriter(new FileWriter(Paths.MASCOTAS))) {
 //            for (String linea : lineas) {
 //                bw.write(linea);
@@ -111,8 +104,6 @@ public class MascotaDAO implements IDAO {
 //        } catch (IOException e) {
 //            System.err.println("Error al escribir el archivo: " + e.getMessage());
 //        }
-        
-        
         System.out.println(dto);
         return dto;
     }
@@ -131,5 +122,5 @@ public class MascotaDAO implements IDAO {
     public ArrayList<IObjetoDTO> listar() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

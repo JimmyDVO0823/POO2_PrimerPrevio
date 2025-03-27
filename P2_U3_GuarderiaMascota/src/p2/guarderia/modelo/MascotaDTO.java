@@ -42,7 +42,7 @@ public class MascotaDTO implements IObjetoDTO {
 
     @Override
     public String toString() {
-        return "ID: " + getId() + " Nombre: " + getNombre() + " Raza: " + getRaza() + " Edad: " + getEdad();
+        return getId() + " - " + getNombre();
     }
     
     

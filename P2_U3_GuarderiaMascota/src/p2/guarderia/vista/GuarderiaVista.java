@@ -6,6 +6,7 @@ package p2.guarderia.vista;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import p2.guarderia.controlador.GuarderiaControlador;
 
@@ -15,6 +16,9 @@ import p2.guarderia.controlador.GuarderiaControlador;
  */
 public class GuarderiaVista extends javax.swing.JFrame {
 
+    private DefaultComboBoxModel<String> modeloMascotas;
+    private DefaultComboBoxModel<String> modeloDuenos;
+    
     private GuarderiaControlador controlador;
 
     /**
@@ -70,6 +74,23 @@ public class GuarderiaVista extends javax.swing.JFrame {
         this.txtNombreMascotaEliminar = txtNombreMascotaEliminar;
     }
 
+    public DefaultComboBoxModel<String> getModeloMascotas() {
+        return modeloMascotas;
+    }
+
+    public void setModeloMascotas(DefaultComboBoxModel<String> modeloMascotas) {
+        this.modeloMascotas = modeloMascotas;
+    }
+
+    public DefaultComboBoxModel<String> getModeloDuenos() {
+        return modeloDuenos;
+    }
+
+    public void setModeloDuenos(DefaultComboBoxModel<String> modeloDuenos) {
+        this.modeloDuenos = modeloDuenos;
+    }
+    
+    
     
     /**
      * This method is called from within the constructor to initialize the form.

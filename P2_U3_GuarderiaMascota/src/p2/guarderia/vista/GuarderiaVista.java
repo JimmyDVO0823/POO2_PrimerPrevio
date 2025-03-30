@@ -7,6 +7,7 @@ package p2.guarderia.vista;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import p2.guarderia.controlador.GuarderiaControlador;
 
@@ -25,9 +26,11 @@ public class GuarderiaVista extends javax.swing.JFrame {
      * Creates new form GuarderiaVista
      */
     public GuarderiaVista() {
-        initComponents();
+        //ESTO LO PUSE AL REVES PARA IR MIRANDO SI QUEDA BIEN
 
         controlador = new GuarderiaControlador(this);
+        initComponents();
+
     }
 
     public JTextField getTxtIdMascotaActualizar() {
@@ -162,13 +165,13 @@ public class GuarderiaVista extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jButton9 = new javax.swing.JButton();
+        cmbDuenoAsignar = new javax.swing.JComboBox<>();
+        cmbMascotaAsignar = new javax.swing.JComboBox<>();
+        cmdAsignarPersona = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jButton10 = new javax.swing.JButton();
+        cmbMascotaRetirar = new javax.swing.JComboBox<>();
+        cmdRetirarPersona = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -408,11 +411,16 @@ public class GuarderiaVista extends javax.swing.JFrame {
 
         jLabel14.setText("Persona:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID - Nombre" }));
+        cmbDuenoAsignar.setModel(modeloDuenos);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID - Nombre" }));
+        cmbMascotaAsignar.setModel(modeloMascotas);
 
-        jButton9.setText("Asignar");
+        cmdAsignarPersona.setText("Asignar");
+        cmdAsignarPersona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdAsignarPersonaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -424,13 +432,13 @@ public class GuarderiaVista extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmbMascotaAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbDuenoAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton9)))
+                        .addComponent(cmdAsignarPersona)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -439,12 +447,12 @@ public class GuarderiaVista extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbMascotaAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9))
+                    .addComponent(cmbDuenoAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmdAsignarPersona))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -452,9 +460,14 @@ public class GuarderiaVista extends javax.swing.JFrame {
 
         jLabel15.setText("Mascota:");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID - Nombre" }));
+        cmbMascotaRetirar.setModel(modeloMascotas);
 
-        jButton10.setText("Retirar");
+        cmdRetirarPersona.setText("Retirar");
+        cmdRetirarPersona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdRetirarPersonaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -464,9 +477,9 @@ public class GuarderiaVista extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmbMascotaRetirar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(jButton10)
+                .addComponent(cmdRetirarPersona)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -475,8 +488,8 @@ public class GuarderiaVista extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10))
+                    .addComponent(cmbMascotaRetirar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmdRetirarPersona))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -563,6 +576,42 @@ public class GuarderiaVista extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmdEliminarActionPerformed
 
+    private void cmdAsignarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdAsignarPersonaActionPerformed
+        controlador.asignarPropietarioMascota();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmdAsignarPersonaActionPerformed
+
+    private void cmdRetirarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdRetirarPersonaActionPerformed
+        controlador.retirarDueno();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmdRetirarPersonaActionPerformed
+
+    public JComboBox<String> getCmbDuenoAsignar() {
+        return cmbDuenoAsignar;
+    }
+
+    public void setCmbDuenoAsignar(JComboBox<String> cmbDuenoAsignar) {
+        this.cmbDuenoAsignar = cmbDuenoAsignar;
+    }
+
+    public JComboBox<String> getCmbMascotaAsignar() {
+        return cmbMascotaAsignar;
+    }
+
+    public void setCmbMascotaAsignar(JComboBox<String> cmbMascotaAsignar) {
+        this.cmbMascotaAsignar = cmbMascotaAsignar;
+    }
+
+    public JComboBox<String> getCmbMascotaRetirar() {
+        return cmbMascotaRetirar;
+    }
+
+    public void setCmbMascotaRetirar(JComboBox<String> cmbMascotaRetirar) {
+        this.cmbMascotaRetirar = cmbMascotaRetirar;
+    }
+
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -599,19 +648,19 @@ public class GuarderiaVista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbDuenoAsignar;
+    private javax.swing.JComboBox<String> cmbMascotaAsignar;
+    private javax.swing.JComboBox<String> cmbMascotaRetirar;
     private javax.swing.JButton cmdActualizar;
+    private javax.swing.JButton cmdAsignarPersona;
     private javax.swing.JButton cmdBuscarEliminar;
     private javax.swing.JButton cmdEliminar;
+    private javax.swing.JButton cmdRetirarPersona;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

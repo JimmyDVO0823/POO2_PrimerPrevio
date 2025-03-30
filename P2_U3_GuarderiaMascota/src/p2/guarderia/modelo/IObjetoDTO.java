@@ -10,4 +10,5 @@ package p2.guarderia.modelo;
  */
 public interface IObjetoDTO{
     public String getId();
+    public String getNombre();
 }

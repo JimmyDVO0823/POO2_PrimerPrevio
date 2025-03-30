@@ -67,7 +67,7 @@ public class MascotaDAO implements IDAO {
 
                 if (idDB.equals(id)) {
                     PersonaDTO personadto = new PersonaDTO();
-                    personadto.setId(id);
+                    personadto.setId(partes[4]);
 
                     dto.setId(partes[0]);
                     dto.setNombre(partes[1]);
@@ -157,6 +157,7 @@ public class MascotaDAO implements IDAO {
                     partes[1] = dto.getNombre();
                     partes[2] = dto.getRaza();
                     partes[3] = String.valueOf(dto.getEdad());
+                    partes[4] = dto.getDto().getId();
 
                     linea = String.join(";", partes);
 
@@ -196,6 +197,7 @@ public class MascotaDAO implements IDAO {
             String linea;
 
             while ((linea = br.readLine()) != null && !encontrado) {
+                //System.out.println(linea);
                 MascotaDTO dto = new MascotaDTO();
                 PersonaDTO persona = new PersonaDTO();
 
@@ -209,7 +211,6 @@ public class MascotaDAO implements IDAO {
                 dto.setEdad(Integer.parseInt(partes[3]));
                 dto.setDto(persona);
 
-                String idDB = partes[0];
 
                 mascotas.add(dto);
 

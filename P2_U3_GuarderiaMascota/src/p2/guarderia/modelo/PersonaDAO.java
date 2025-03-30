@@ -27,7 +27,6 @@ public class PersonaDAO implements IDAO {
     public IObjetoDTO buscar(String id) throws Exception {
         PersonaDTO dto = new PersonaDTO();
 
-        List<String> lineas = new ArrayList<>();
         boolean encontrado = false;
 
         try (BufferedReader br = new BufferedReader(new FileReader(Paths.PERSONAS))) {
@@ -46,6 +45,7 @@ public class PersonaDAO implements IDAO {
                     dto.setId(partes[0]);
                     dto.setNombre(partes[1]);
                     
+                    System.out.println("El dueño es " + partes[1]);
 
                     encontrado = true;
                 }
@@ -58,7 +58,7 @@ public class PersonaDAO implements IDAO {
         }
 
         if (!encontrado) {
-            System.out.println("Número de cuenta no encontrado.");
+            System.out.println("Número de cuenta no encontradooooooooo.");
             JOptionPane.showMessageDialog(null, "Mascota no Encontrada", "Busqueda Fallida", JOptionPane.ERROR_MESSAGE);
         }
 
@@ -79,7 +79,35 @@ public class PersonaDAO implements IDAO {
 
     @Override
     public ArrayList<IObjetoDTO> listar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ArrayList<IObjetoDTO> personas = new ArrayList<>();
+        List<String> lineas = new ArrayList<>();
+        boolean encontrado = false;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(Paths.PERSONAS))) {
+            String linea;
+
+            while ((linea = br.readLine()) != null && !encontrado) {
+                //System.out.println(linea);
+                PersonaDTO dto = new PersonaDTO();
+                PersonaDTO persona = new PersonaDTO();
+
+                String[] partes = linea.split(";");
+
+
+                dto.setId(partes[0]);
+                dto.setNombre(partes[1]);
+                
+
+
+                personas.add(dto);
+
+                lineas.add(linea);
+            }
+        } catch (IOException e) {
+            System.err.println("Error al leer el archivo: " + e.getMessage());
+
+        }
+        return personas;
     }
 
 }

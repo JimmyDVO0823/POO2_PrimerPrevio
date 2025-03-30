@@ -509,6 +509,7 @@ public class GuarderiaVista extends javax.swing.JFrame {
         try {
             controlador.buscarEliminar();
         } catch (Exception ex) {
+            //System.out.println("no se por que pero me lanza para acá");
             Logger.getLogger(GuarderiaVista.class.getName()).log(Level.SEVERE, null, ex);
         }
         

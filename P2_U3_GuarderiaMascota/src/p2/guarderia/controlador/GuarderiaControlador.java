@@ -43,10 +43,15 @@ public class GuarderiaControlador {
 
     public void buscarEliminar() throws Exception {
         try {
-            String nombreMascota = negocio.buscarMascota(frame.getTxtIdMascotaEliminar().getText()).getNombre();
-            System.out.println(nombreMascota);
-            frame.getTxtNombreMascotaEliminar().setText(nombreMascota);
-
+            System.out.println("ESTAMOS EN ELLOOO");
+            String idMascota = frame.getTxtIdMascotaEliminar().getText();
+            //System.out.println("EL ID ESCRITO ES" + idMascota);
+            String nombreMascota = negocio.buscarMascota(idMascota).getNombre();
+            System.out.println("EL ID ESCRITO POR EL USUARIO ES: " + idMascota);
+            negocio.buscarMascota(idMascota);
+            System.out.println("Nombre Mascota: " );
+            frame.getTxtNombreMascotaEliminar().setText(idMascota);
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Mascota no Encontrada", "Busqueda Fallida", JOptionPane.ERROR_MESSAGE);
 

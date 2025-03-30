@@ -17,13 +17,30 @@ public class GuarderiaFachada {
     public void agregarMascota(String id, String nombre,
             String edad, String raza) throws Exception {
         int edadParseada = Integer.parseInt(edad);
-        
+
         idao = new MascotaDAO();
 
-        MascotaDTO dto = new MascotaDTO(id, nombre,raza,edadParseada);
-        
+        MascotaDTO dto = new MascotaDTO(id, nombre, raza, edadParseada);
+
         idao.agregar(dto);
 
+    }
+
+    public void eliminarMascota() {
+
+    }
+
+    public MascotaDTO buscarMascota(String idMascota) throws Exception {
+        idao = new MascotaDAO();
+        MascotaDTO dtoM = (MascotaDTO) idao.buscar(idMascota);
+        System.out.println("EL NOMBRE DE LA MASCOTA ES: " + dtoM.getNombre());
+
+        idao = new PersonaDAO();
+        PersonaDTO dtoP = (PersonaDTO) idao.buscar(dtoM.getDto().getId());
+
+        dtoM.setDto(dtoP);
+
+        return dtoM;
     }
 
     public void asignarPropietarioMascota(String idMascota,
@@ -40,22 +57,35 @@ public class GuarderiaFachada {
         // Actualizar!!
     }
 
-    public MascotaDTO buscarMascota(String idMascota) throws Exception {
-        idao = new MascotaDAO();
-        MascotaDTO dtoM = (MascotaDTO) idao.buscar(idMascota);
+    public void retirarPropietrioMascota() {
 
-        idao = new PersonaDAO();
-        PersonaDTO dtoP = (PersonaDTO) idao.buscar(dtoM.getDto().getId());
-
-        dtoM.setDto(dtoP);
-
-        return dtoM;
     }
 
-    public ArrayList<String> listarMascotasId(){
-        ArrayList<String> lista;
+    public String[] listarMascotas() {
         idao = new MascotaDAO();
+        ArrayList<IObjetoDTO> lista;
+
         lista = idao.listar();
+        String[] listaString = new String[lista.size()];
+        for (int i = 0; i < lista.size(); i++) {
+            listaString[i] = lista.get(i).getId();
+        }
+        return listaString;
     }
-    
+
+    public String[] listarPersonas() {
+        idao = new PersonaDAO();
+        ArrayList<IObjetoDTO> lista;
+
+        lista = idao.listar();
+        String[] listaString = new String[lista.size()];
+        for (int i = 0; i < lista.size(); i++) {
+            listaString[i] = lista.get(i).getId();
+        }
+        return listaString;
+    }
+
+    public void actualizarMascota() {
+
+    }
 }

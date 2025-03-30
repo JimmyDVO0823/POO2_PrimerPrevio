@@ -9,5 +9,5 @@ package p2.guarderia.modelo;
  * @author borisperezg
  */
 public interface IObjetoDTO{
-    
+    public String getId();
 }

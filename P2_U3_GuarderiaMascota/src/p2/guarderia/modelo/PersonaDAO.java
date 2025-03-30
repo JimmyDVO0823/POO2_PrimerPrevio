@@ -68,12 +68,12 @@ public class PersonaDAO implements IDAO {
     }
 
     @Override
-    public void eliminar() {
+    public void eliminar(String id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void actiualizar() {
+    public void actiualizar(String id, IObjetoDTO dto) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

@@ -18,7 +18,7 @@ public class GuarderiaVista extends javax.swing.JFrame {
 
     private DefaultComboBoxModel<String> modeloMascotas;
     private DefaultComboBoxModel<String> modeloDuenos;
-    
+
     private GuarderiaControlador controlador;
 
     /**
@@ -89,8 +89,31 @@ public class GuarderiaVista extends javax.swing.JFrame {
     public void setModeloDuenos(DefaultComboBoxModel<String> modeloDuenos) {
         this.modeloDuenos = modeloDuenos;
     }
-    
-    
+
+    public JTextField getTxtEdadAct() {
+        return txtEdadAct;
+    }
+
+    public void setTxtEdadAct(JTextField txtEdadAct) {
+        this.txtEdadAct = txtEdadAct;
+    }
+
+    public JTextField getTxtNombreAct() {
+        return txtNombreAct;
+    }
+
+    public void setTxtNombreAct(JTextField txtNombreAct) {
+        this.txtNombreAct = txtNombreAct;
+    }
+
+    public JTextField getTxtRazaAct() {
+        return txtRazaAct;
+    }
+
+    public void setTxtRazaAct(JTextField txtRazaAct) {
+        this.txtRazaAct = txtRazaAct;
+    }
+
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -119,19 +142,19 @@ public class GuarderiaVista extends javax.swing.JFrame {
         cmdBuscarEliminar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         txtNombreMascotaEliminar = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        cmdEliminar = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         txtIdMascotaActualizar = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
-        jTextField8 = new javax.swing.JTextField();
+        txtNombreAct = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        txtEdadAct = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jButton7 = new javax.swing.JButton();
+        txtRazaAct = new javax.swing.JTextField();
+        cmdActualizar = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -243,7 +266,12 @@ public class GuarderiaVista extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Eliminar");
+        cmdEliminar.setText("Eliminar");
+        cmdEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdEliminarActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Limpiar");
 
@@ -257,7 +285,7 @@ public class GuarderiaVista extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4))
+                        .addComponent(cmdEliminar))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabel6)
@@ -285,7 +313,7 @@ public class GuarderiaVista extends javax.swing.JFrame {
                     .addComponent(txtNombreMascotaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
+                    .addComponent(cmdEliminar)
                     .addComponent(jButton5))
                 .addContainerGap())
         );
@@ -302,7 +330,12 @@ public class GuarderiaVista extends javax.swing.JFrame {
 
         jLabel11.setText("Raza:");
 
-        jButton7.setText("Actualizar");
+        cmdActualizar.setText("Actualizar");
+        cmdActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdActualizarActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("Limpiar");
 
@@ -318,7 +351,7 @@ public class GuarderiaVista extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField8))
+                                .addComponent(txtNombreAct))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -330,14 +363,14 @@ public class GuarderiaVista extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtEdadAct, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButton8)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtRazaAct, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton7)))
+                        .addComponent(cmdActualizar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -352,14 +385,14 @@ public class GuarderiaVista extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombreAct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEdadAct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7))
+                    .addComponent(txtRazaAct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmdActualizar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -505,20 +538,30 @@ public class GuarderiaVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cmdBuscarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBuscarEliminarActionPerformed
-        
+
         try {
             controlador.buscarEliminar();
         } catch (Exception ex) {
             //System.out.println("no se por que pero me lanza para acá");
             Logger.getLogger(GuarderiaVista.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
+
     }//GEN-LAST:event_cmdBuscarEliminarActionPerformed
 
     private void txtNombreMascotaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreMascotaEliminarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreMascotaEliminarActionPerformed
+
+    private void cmdActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdActualizarActionPerformed
+        controlador.actualizarMascota();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmdActualizarActionPerformed
+
+    private void cmdEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdEliminarActionPerformed
+        controlador.eliminar();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmdEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -556,14 +599,14 @@ public class GuarderiaVista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdActualizar;
     private javax.swing.JButton cmdBuscarEliminar;
+    private javax.swing.JButton cmdEliminar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -591,15 +634,15 @@ public class GuarderiaVista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField txtEdadAct;
     private javax.swing.JTextField txtEdadMascota;
     private javax.swing.JTextField txtIdMascotaActualizar;
     private javax.swing.JTextField txtIdMascotaAgregar;
     private javax.swing.JTextField txtIdMascotaEliminar;
+    private javax.swing.JTextField txtNombreAct;
     private javax.swing.JTextField txtNombreMascota;
     private javax.swing.JTextField txtNombreMascotaEliminar;
+    private javax.swing.JTextField txtRazaAct;
     private javax.swing.JTextField txtRazaMascota;
     // End of variables declaration//GEN-END:variables
 }

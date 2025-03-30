@@ -26,14 +26,15 @@ public class GuarderiaFachada {
 
     }
 
-    public void eliminarMascota() {
-
+    public void eliminarMascota(String id) {
+        idao = new MascotaDAO();
+        idao.eliminar(id);
     }
 
     public MascotaDTO buscarMascota(String idMascota) throws Exception {
         idao = new MascotaDAO();
         MascotaDTO dtoM = (MascotaDTO) idao.buscar(idMascota);
-        System.out.println("EL NOMBRE DE LA MASCOTA ES: " + dtoM.getNombre());
+        //System.out.println("EL NOMBRE DE LA MASCOTA ES: " + dtoM.getNombre());
 
         idao = new PersonaDAO();
         PersonaDTO dtoP = (PersonaDTO) idao.buscar(dtoM.getDto().getId());
@@ -43,8 +44,7 @@ public class GuarderiaFachada {
         return dtoM;
     }
 
-    public void asignarPropietarioMascota(String idMascota,
-            String idPersona) throws Exception {
+    public void asignarPropietarioMascota(String idMascota,String idPersona) throws Exception {
 
         idao = new MascotaDAO();
         MascotaDTO dtoM = (MascotaDTO) idao.buscar(idMascota);
@@ -85,7 +85,12 @@ public class GuarderiaFachada {
         return listaString;
     }
 
-    public void actualizarMascota() {
-
+    public void actualizarMascota(String id, String nombre, String raza, String edad) {
+        int edadMascota = Integer.parseInt(edad);
+        MascotaDTO dto = new MascotaDTO(id, nombre, raza, edadMascota);
+        idao = new MascotaDAO();
+        idao.actiualizar(id, dto);
+        
+        idao.actiualizar(id, dto);
     }
 }

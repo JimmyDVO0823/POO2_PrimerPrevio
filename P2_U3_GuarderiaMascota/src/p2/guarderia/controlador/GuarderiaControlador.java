@@ -4,6 +4,7 @@
  */
 package p2.guarderia.controlador;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -43,26 +44,46 @@ public class GuarderiaControlador {
 
     public void buscarEliminar() throws Exception {
         try {
-            System.out.println("ESTAMOS EN ELLOOO");
             String idMascota = frame.getTxtIdMascotaEliminar().getText();
             //System.out.println("EL ID ESCRITO ES" + idMascota);
             String nombreMascota = negocio.buscarMascota(idMascota).getNombre();
-            System.out.println("EL ID ESCRITO POR EL USUARIO ES: " + idMascota);
+            //System.out.println("EL ID ESCRITO POR EL USUARIO ES: " + idMascota);
             negocio.buscarMascota(idMascota);
-            System.out.println("Nombre Mascota: " );
-            frame.getTxtNombreMascotaEliminar().setText(idMascota);
+            //System.out.println("Nombre Mascota: " + nombreMascota);
+            frame.getTxtNombreMascotaEliminar().setText(nombreMascota);
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Mascota no Encontrada", "Busqueda Fallida", JOptionPane.ERROR_MESSAGE);
 
         }
     }
+    
+    public void eliminar(){
+        String id = frame.getTxtIdMascotaEliminar().getText();
+        negocio.eliminarMascota(id);
+    }
 
     public void setNombreEliminarTxt(String nombre) {
         frame.getTxtNombreMascotaEliminar().setText(nombre);
     }
 
-//    public String[] buscarMascota(){
-//        
-//    }
+    public void actualizarMascota(){
+        String id = frame.getTxtIdMascotaActualizar().getText();
+        String edad = frame.getTxtEdadAct().getText();
+        String raza = frame.getTxtRazaAct().getText();
+        String nombre = frame.getTxtNombreAct().getText();
+        negocio.actualizarMascota(id,nombre,raza,edad);
+    }
+    
+    public String[] getListaMascotas(){
+        String[] listaMascotas;
+        listaMascotas = negocio.listarMascotas();
+        return listaMascotas;
+    }
+    
+    public String[] getListaPersonas(){
+        String[] listaPersonas;
+        listaPersonas = negocio.listarPersonas();
+        return listaPersonas;
+    }
 }

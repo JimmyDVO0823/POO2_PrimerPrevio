@@ -54,7 +54,6 @@ public class MascotaDAO implements IDAO {
     public IObjetoDTO buscar(String id) throws Exception {
         MascotaDTO dto = new MascotaDTO();
 
-        List<String> lineas = new ArrayList<>();
         boolean encontrado = false;
 
         try (BufferedReader br = new BufferedReader(new FileReader(Paths.MASCOTAS))) {
@@ -78,8 +77,6 @@ public class MascotaDAO implements IDAO {
 
                     encontrado = true;
                 }
-
-                //lineas.add(linea);
             }
         } catch (IOException e) {
             System.err.println("Error al leer el archivo: " + e.getMessage());
@@ -91,25 +88,107 @@ public class MascotaDAO implements IDAO {
             JOptionPane.showMessageDialog(null, "Mascota no Encontrada", "Busqueda Fallida", JOptionPane.ERROR_MESSAGE);
         }
 
-        System.out.println(dto);
+        //System.out.println(dto.getNombre());
         return dto;
     }
 
     @Override
-    public void eliminar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void eliminar(String idMascota) {
+        List<String> lineas = new ArrayList<>();
+        boolean encontrado = false;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(Paths.MASCOTAS))) {
+            String linea;
+
+            while ((linea = br.readLine()) != null) {
+
+                String[] partes = linea.split(";");
+
+                String id = partes[0];
+
+                if (id.equals(idMascota)) {
+
+
+                    linea = "";
+
+                    encontrado = true;
+                }
+                
+                lineas.add(linea);
+            }
+        } catch (IOException e) {
+            System.err.println("Error al leer el archivo: " + e.getMessage());
+            return;
+        }
+
+        if (!encontrado) {
+            System.out.println("Número de cuenta no encontrado.");
+            return;
+        }
+
+        
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(Paths.MASCOTAS))) {
+            for (String linea : lineas) {
+                bw.write(linea);
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            System.err.println("Error al escribir el archivo: " + e.getMessage());
+        }
     }
 
     @Override
-    public void actiualizar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void actiualizar(String idMascota, IObjetoDTO dtoF) {
+        List<String> lineas = new ArrayList<>();
+        boolean encontrado = false;
+        MascotaDTO dto = (MascotaDTO) dtoF;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(Paths.MASCOTAS))) {
+            String linea;
+
+            while ((linea = br.readLine()) != null) {
+
+                String[] partes = linea.split(";");
+
+                String id = partes[0];
+
+                if (id.equals(idMascota) && dto instanceof MascotaDTO) {
+
+                    partes[1] = dto.getNombre();
+                    partes[2] = dto.getRaza();
+                    partes[3] = String.valueOf(dto.getEdad());
+
+                    linea = String.join(";", partes);
+
+                    encontrado = true;
+                }
+
+                lineas.add(linea);
+            }
+        } catch (IOException e) {
+            System.err.println("Error al leer el archivo: " + e.getMessage());
+            return;
+        }
+
+        if (!encontrado) {
+            System.out.println("Número de cuenta no encontrado.");
+            return;
+        }
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(Paths.MASCOTAS))) {
+            for (String linea : lineas) {
+                bw.write(linea);
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            System.err.println("Error al escribir el archivo: " + e.getMessage());
+        }
+
     }
 
     @Override
     public ArrayList<IObjetoDTO> listar() {
-        MascotaDTO dto = new MascotaDTO();
-        PersonaDTO persona = new PersonaDTO();
-        ArrayList<MascotaDTO> mascotas = new ArrayList<>();
+        ArrayList<IObjetoDTO> mascotas = new ArrayList<>();
         List<String> lineas = new ArrayList<>();
         boolean encontrado = false;
 
@@ -117,25 +196,29 @@ public class MascotaDAO implements IDAO {
             String linea;
 
             while ((linea = br.readLine()) != null && !encontrado) {
+                MascotaDTO dto = new MascotaDTO();
+                PersonaDTO persona = new PersonaDTO();
 
                 String[] partes = linea.split(";");
 
                 persona.setId(partes[4]);
-                
+
                 dto.setId(partes[0]);
                 dto.setNombre(partes[1]);
                 dto.setRaza(partes[2]);
                 dto.setEdad(Integer.parseInt(partes[3]));
                 dto.setDto(persona);
-                
+
                 String idDB = partes[0];
-                
+
+                mascotas.add(dto);
+
                 lineas.add(linea);
             }
-            throw new UnsupportedOperationException("Not supported yet.");
         } catch (IOException e) {
             System.err.println("Error al leer el archivo: " + e.getMessage());
 
         }
-
+        return mascotas;
     }
+}

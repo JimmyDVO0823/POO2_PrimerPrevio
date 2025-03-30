@@ -47,6 +47,7 @@ public class MascotaDTO implements IObjetoDTO {
     
     
 
+    @Override
     public String getId() {
         return id;
     }

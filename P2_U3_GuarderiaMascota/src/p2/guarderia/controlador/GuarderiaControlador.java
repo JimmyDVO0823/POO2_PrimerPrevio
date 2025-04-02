@@ -76,8 +76,8 @@ public class GuarderiaControlador {
             negocio.buscarMascota(idMascota);
             //System.out.println("Nombre Mascota: " + nombreMascota);
             frame.getTxtNombreMascotaEliminar().setText(nombreMascota);
-
-            String[] lista = getListaMascotas();
+            
+            System.out.println("no hay problemas");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Mascota no Encontrada", "Busqueda Fallida", JOptionPane.ERROR_MESSAGE);
 

@@ -30,6 +30,13 @@ public class GuarderiaFachada {
         idao.eliminar(id);
     }
 
+    public void actualizarMascota(String id, String nombre, String raza, String edad) {
+        int edadMascota = Integer.parseInt(edad);
+        MascotaDTO dto = new MascotaDTO(id, nombre, raza, edadMascota);
+        idao = new MascotaDAO();
+        idao.actiualizar(id, dto);
+    }
+
     public MascotaDTO buscarMascota(String idMascota) throws Exception {
         idao = new MascotaDAO();
         MascotaDTO dtoM = (MascotaDTO) idao.buscar(idMascota);
@@ -38,7 +45,7 @@ public class GuarderiaFachada {
         idao = new PersonaDAO();
         PersonaDTO dtoP = (PersonaDTO) idao.buscar(dtoM.getDto().getId());
         //System.out.println("CODIGO DEL DUEÑO " + dtoP.getId());
-        
+
         dtoM.setDto(dtoP);
 
         System.out.println("SE PUDO BUSCARMASCOTA");
@@ -76,18 +83,6 @@ public class GuarderiaFachada {
 
     }
 
-    public String[] listarMascotas() {
-        idao = new MascotaDAO();
-        ArrayList<IObjetoDTO> lista;
-
-        lista = idao.listar();
-        String[] listaString = new String[lista.size()];
-        for (int i = 0; i < lista.size(); i++) {
-            listaString[i] = lista.get(i).getId() + " - " + lista.get(i).getNombre();
-        }
-        return listaString;
-    }
-
     public String[] listarPersonas() {
         idao = new PersonaDAO();
         ArrayList<IObjetoDTO> lista;
@@ -100,12 +95,15 @@ public class GuarderiaFachada {
         return listaString;
     }
 
-    public void actualizarMascota(String id, String nombre, String raza, String edad) {
-        int edadMascota = Integer.parseInt(edad);
-        MascotaDTO dto = new MascotaDTO(id, nombre, raza, edadMascota);
+    public String[] listarMascotas() {
         idao = new MascotaDAO();
-        idao.actiualizar(id, dto);
+        ArrayList<IObjetoDTO> lista;
 
-        idao.actiualizar(id, dto);
+        lista = idao.listar();
+        String[] listaString = new String[lista.size()];
+        for (int i = 0; i < lista.size(); i++) {
+            listaString[i] = lista.get(i).getId() + " - " + lista.get(i).getNombre();
+        }
+        return listaString;
     }
 }

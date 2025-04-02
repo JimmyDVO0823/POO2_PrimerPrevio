@@ -12,9 +12,9 @@ import java.util.ArrayList;
  */
 public interface IDAO {
     public void agregar(IObjetoDTO dto) throws Exception;
-    public IObjetoDTO buscar(String id) throws Exception;
     public void eliminar(String id);
     public void actiualizar(String id, IObjetoDTO dto);
+    public IObjetoDTO buscar(String id) throws Exception;
     public ArrayList<IObjetoDTO> listar();
     
 }

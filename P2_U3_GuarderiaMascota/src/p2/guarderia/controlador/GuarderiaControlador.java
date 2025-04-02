@@ -67,7 +67,7 @@ public class GuarderiaControlador {
         }
     }
 
-    public void buscarEliminar() throws Exception {
+    public void buscarEliminar() {
         try {
             String idMascota = frame.getTxtIdMascotaEliminar().getText();
             //System.out.println("EL ID ESCRITO ES" + idMascota);

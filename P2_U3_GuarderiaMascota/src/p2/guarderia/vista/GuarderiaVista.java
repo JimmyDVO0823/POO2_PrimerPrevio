@@ -117,7 +117,6 @@ public class GuarderiaVista extends javax.swing.JFrame {
         this.txtRazaAct = txtRazaAct;
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -404,6 +403,7 @@ public class GuarderiaVista extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
@@ -557,12 +557,7 @@ public class GuarderiaVista extends javax.swing.JFrame {
 
     private void cmdBuscarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBuscarEliminarActionPerformed
 
-        try {
-            controlador.buscarEliminar();
-        } catch (Exception ex) {
-            //System.out.println("no se por que pero me lanza para acá");
-            Logger.getLogger(GuarderiaVista.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        controlador.buscarEliminar();
 
 
     }//GEN-LAST:event_cmdBuscarEliminarActionPerformed
@@ -620,8 +615,6 @@ public class GuarderiaVista extends javax.swing.JFrame {
         this.cmbMascotaRetirar = cmbMascotaRetirar;
     }
 
-    
-    
     /**
      * @param args the command line arguments
      */

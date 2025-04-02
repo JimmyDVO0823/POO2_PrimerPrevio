@@ -56,7 +56,7 @@ public class GuarderiaFachada {
 
         idao = new MascotaDAO();
         MascotaDTO dtoM = (MascotaDTO) idao.buscar(idMascota);
-
+        
         idao = new PersonaDAO();
         PersonaDTO dtoP = (PersonaDTO) idao.buscar(idPersona);
 

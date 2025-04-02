@@ -159,7 +159,7 @@ public class MascotaDAO implements IDAO {
                     partes[1] = dto.getNombre();
                     partes[2] = dto.getRaza();
                     partes[3] = String.valueOf(dto.getEdad());
-                    //if(dto.getDto().getId() != null)partes[4] = dto.getDto().getId();
+                    if(dto.getDto().getId() != null)partes[4] = dto.getDto().getId();
 
 //                    System.out.println("Nombre: " + partes[1] + "\nRaza: " + partes[2]
 //                    + "\nEdad: " + partes[3] + "\nID: " + partes[4]);

@@ -124,6 +124,9 @@ public class GuarderiaControlador {
         String idMascota = mascota[0];
         String idPersona = persona[0];
         
+            System.out.println("id de mascota: " + idMascota
+            + "\nid Dueño: " + idPersona);
+        
         negocio.asignarPropietarioMascota(idMascota, idPersona);
         } catch (Exception e) {
             System.out.println("error");

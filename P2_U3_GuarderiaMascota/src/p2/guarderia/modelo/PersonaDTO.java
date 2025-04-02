@@ -38,6 +38,16 @@ public class PersonaDTO implements IObjetoDTO{
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean iguales = false;
+        if(obj instanceof PersonaDTO){
+            iguales = ((PersonaDTO) obj).getId().equals(getId());
+        }
+        return iguales;
+    }
+    
     
     
 }

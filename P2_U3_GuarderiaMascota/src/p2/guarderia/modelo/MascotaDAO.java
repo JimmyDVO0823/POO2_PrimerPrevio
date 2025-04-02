@@ -107,7 +107,7 @@ public class MascotaDAO implements IDAO {
                 String id = partes[0];
 
                 if (id.equals(idMascota)) {
-
+                    //continue;
 
                     linea = "";
 
@@ -128,7 +128,9 @@ public class MascotaDAO implements IDAO {
 
         
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(Paths.MASCOTAS))) {
-            for (String linea : lineas) {
+            for (int i = 0; i < lineas.size(); i++) {
+                String linea = lineas.get(i);
+                if(linea == "") continue;
                 bw.write(linea);
                 bw.newLine();
             }
@@ -159,8 +161,8 @@ public class MascotaDAO implements IDAO {
                     partes[3] = String.valueOf(dto.getEdad());
                     //if(dto.getDto().getId() != null)partes[4] = dto.getDto().getId();
 
-                    System.out.println("Nombre: " + partes[1] + "\nRaza: " + partes[2]
-                    + "\nEdad: " + partes[3] + "\nID: " + partes[4]);
+//                    System.out.println("Nombre: " + partes[1] + "\nRaza: " + partes[2]
+//                    + "\nEdad: " + partes[3] + "\nID: " + partes[4]);
                     linea = String.join(";", partes);
 
                     encontrado = true;

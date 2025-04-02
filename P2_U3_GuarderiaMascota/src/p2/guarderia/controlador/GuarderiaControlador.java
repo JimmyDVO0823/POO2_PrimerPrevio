@@ -146,6 +146,10 @@ public class GuarderiaControlador {
 
     public void aniadirPersonaModelo(String id, String nombre) {
         modelo2.addElement(id + " - " + nombre);
-
+    }
+    
+    public void limpiarEliminar(){
+        frame.getTxtNombreMascotaEliminar().setText("");
+        frame.getTxtIdMascotaEliminar().setText("");
     }
 }

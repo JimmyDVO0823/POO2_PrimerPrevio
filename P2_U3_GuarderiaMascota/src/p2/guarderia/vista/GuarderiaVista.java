@@ -146,7 +146,7 @@ public class GuarderiaVista extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtNombreMascotaEliminar = new javax.swing.JTextField();
         cmdEliminar = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        cmdLimpiarEliminar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         txtIdMascotaActualizar = new javax.swing.JTextField();
@@ -276,7 +276,12 @@ public class GuarderiaVista extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("Limpiar");
+        cmdLimpiarEliminar.setText("Limpiar");
+        cmdLimpiarEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdLimpiarEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -286,7 +291,7 @@ public class GuarderiaVista extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton5)
+                        .addComponent(cmdLimpiarEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cmdEliminar))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,7 +322,7 @@ public class GuarderiaVista extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdEliminar)
-                    .addComponent(jButton5))
+                    .addComponent(cmdLimpiarEliminar))
                 .addContainerGap())
         );
 
@@ -586,6 +591,11 @@ public class GuarderiaVista extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmdRetirarPersonaActionPerformed
 
+    private void cmdLimpiarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLimpiarEliminarActionPerformed
+        controlador.limpiarEliminar();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmdLimpiarEliminarActionPerformed
+
     public JComboBox<String> getCmbDuenoAsignar() {
         return cmbDuenoAsignar;
     }
@@ -655,10 +665,10 @@ public class GuarderiaVista extends javax.swing.JFrame {
     private javax.swing.JButton cmdAsignarPersona;
     private javax.swing.JButton cmdBuscarEliminar;
     private javax.swing.JButton cmdEliminar;
+    private javax.swing.JButton cmdLimpiarEliminar;
     private javax.swing.JButton cmdRetirarPersona;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
